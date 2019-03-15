@@ -24,7 +24,7 @@
     </target>
 
     <target name="runTest" depends="compileTest">
-        <junit>
+        <junit haltonfailure="no" failureproperty="test.failed">
             <classpath>
                 <pathelement location="build/classes/src"/>
                 <pathelement location="build/classes/test"/>
@@ -37,6 +37,7 @@
             </batchtest>
             <formatter type="brief" usefile="false"/>
         </junit>
+        <fail message="Test failure detected, check test results." if="test.failed" />
     </target>
 
 
